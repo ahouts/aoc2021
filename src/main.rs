@@ -9,6 +9,6 @@ mod day4;
 fn main() -> Result<(), Box<dyn Error>> {
     let p = std::path::Path::new("day4.txt");
     let f = std::fs::File::open(p)?;
-    println!("{}", day4::part1(BufReader::new(f)));
+    println!("{}", day4::part2(BufReader::new(f)));
     Ok(())
 }

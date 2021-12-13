@@ -96,3 +96,36 @@ pub fn part1<R: BufRead>(reader: R) -> u32 {
 
     panic!()
 }
+
+pub fn part2<R: BufRead>(reader: R) -> u32 {
+    let mut lines = reader.lines();
+    let nums: Vec<u8> = lines
+        .next()
+        .unwrap()
+        .unwrap()
+        .split(',')
+        .map(|n| n.parse::<u8>().unwrap())
+        .collect();
+
+    let mut lines = lines.map(|res| res.unwrap());
+    let mut boards = Vec::new();
+    while let Some(_) = lines.next() {
+        let board = Board::load(&mut lines);
+        boards.push(board);
+    }
+
+    let mut has_won = vec![false; boards.len()];
+
+    for i in 1..nums.len() {
+        for (bi, b) in boards.iter().enumerate() {
+            if let Some(score) = b.completion_score(&nums[..i]) {
+                has_won[bi] = true;
+                if has_won.iter().all(|r| *r) {
+                    return score * nums[i - 1] as u32;
+                }
+            }
+        }
+    }
+
+    panic!()
+}
