@@ -1,5 +1,6 @@
 use std::io::BufRead;
 
+#[allow(dead_code)]
 pub fn part1<R: BufRead>(reader: R) -> u32 {
     let line = reader.lines().next().unwrap().unwrap();
     let mut counts = [0; 9];
@@ -23,6 +24,7 @@ pub fn part1<R: BufRead>(reader: R) -> u32 {
     counts.iter().sum()
 }
 
+#[allow(dead_code)]
 pub fn part2<R: BufRead>(reader: R) -> u64 {
     let line = reader.lines().next().unwrap().unwrap();
     let mut counts = [0_u64; 9];

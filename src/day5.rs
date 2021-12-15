@@ -74,6 +74,7 @@ impl IndexMut<(usize, usize)> for Board {
     }
 }
 
+#[allow(dead_code)]
 pub fn part1<R: BufRead>(reader: R) -> usize {
     let mut board = Board::default();
     for res in reader.lines() {
@@ -104,6 +105,7 @@ pub fn part1<R: BufRead>(reader: R) -> usize {
         .count()
 }
 
+#[allow(dead_code)]
 pub fn part2<R: BufRead>(reader: R) -> usize {
     let mut board = Board::default();
     for res in reader.lines() {

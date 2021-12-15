@@ -17,9 +17,18 @@ impl Add<Ins> for Pos {
 
     fn add(self, ins: Ins) -> Self::Output {
         match ins {
-            Ins::Forward(f) => Pos { x: self.x + f, ..self },
-            Ins::Down(f) => Pos { y: self.y + f, ..self },
-            Ins::Up(f) => Pos { y: self.y - f, ..self },
+            Ins::Forward(f) => Pos {
+                x: self.x + f,
+                ..self
+            },
+            Ins::Down(f) => Pos {
+                y: self.y + f,
+                ..self
+            },
+            Ins::Up(f) => Pos {
+                y: self.y - f,
+                ..self
+            },
         }
     }
 }
@@ -30,8 +39,10 @@ enum Ins {
     Up(u32),
 }
 
+#[allow(dead_code)]
 pub fn part1<R: BufRead>(reader: R) -> u32 {
-    let pos = reader.lines()
+    let pos = reader
+        .lines()
         .map(Result::unwrap)
         .map(|line: String| {
             let d: Vec<&str> = line.split_whitespace().collect();
@@ -58,15 +69,27 @@ impl Add<Ins> for Pos2 {
 
     fn add(self, ins: Ins) -> Self::Output {
         match ins {
-            Ins::Forward(f) => Pos2 { x: self.x + f as i32, y: self.y + self.aim * f as i32, ..self },
-            Ins::Down(f) => Pos2 { aim: self.aim + f as i32, ..self },
-            Ins::Up(f) => Pos2 { aim: self.aim - f as i32, ..self },
+            Ins::Forward(f) => Pos2 {
+                x: self.x + f as i32,
+                y: self.y + self.aim * f as i32,
+                ..self
+            },
+            Ins::Down(f) => Pos2 {
+                aim: self.aim + f as i32,
+                ..self
+            },
+            Ins::Up(f) => Pos2 {
+                aim: self.aim - f as i32,
+                ..self
+            },
         }
     }
 }
 
+#[allow(dead_code)]
 pub fn part2<R: BufRead>(reader: R) -> i32 {
-    let pos = reader.lines()
+    let pos = reader
+        .lines()
         .map(Result::unwrap)
         .map(|line: String| {
             let d: Vec<&str> = line.split_whitespace().collect();

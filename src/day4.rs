@@ -8,7 +8,7 @@ struct Board {
 impl Board {
     fn load(iter: &mut impl Iterator<Item = String>) -> Self {
         let mut board = Board { data: [[0; 5]; 5] };
-        fn load_line(board: &mut Board, row: usize, mut iter: &mut impl Iterator<Item = String>) {
+        fn load_line(board: &mut Board, row: usize, iter: &mut impl Iterator<Item = String>) {
             board.data[row]
                 .iter_mut()
                 .zip(
@@ -69,6 +69,7 @@ impl IndexMut<(usize, usize)> for Board {
     }
 }
 
+#[allow(dead_code)]
 pub fn part1<R: BufRead>(reader: R) -> u32 {
     let mut lines = reader.lines();
     let nums: Vec<u8> = lines
@@ -97,6 +98,7 @@ pub fn part1<R: BufRead>(reader: R) -> u32 {
     panic!()
 }
 
+#[allow(dead_code)]
 pub fn part2<R: BufRead>(reader: R) -> u32 {
     let mut lines = reader.lines();
     let nums: Vec<u8> = lines

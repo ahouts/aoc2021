@@ -15,6 +15,7 @@ fn bits_to_u32(bits: Vec<bool>) -> u32 {
     n
 }
 
+#[allow(dead_code)]
 pub fn part1<R: BufRead>(reader: R) -> u32 {
     let (count, pip_count) = reader
         .lines()
@@ -40,6 +41,7 @@ pub fn part1<R: BufRead>(reader: R) -> u32 {
     bits_to_u32(gamma_bits) * bits_to_u32(epsilon_bits)
 }
 
+#[allow(dead_code)]
 pub fn part2<R: BufRead>(reader: R) -> u32 {
     let all_bits: Vec<Vec<bool>> = reader
         .lines()

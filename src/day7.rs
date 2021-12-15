@@ -1,5 +1,6 @@
 use std::io::BufRead;
 
+#[allow(dead_code)]
 pub fn part1<R: BufRead>(reader: R) -> i32 {
     let positions: Vec<i32> = reader
         .lines()
@@ -16,6 +17,7 @@ pub fn part1<R: BufRead>(reader: R) -> i32 {
         .unwrap()
 }
 
+#[allow(dead_code)]
 pub fn part2<R: BufRead>(reader: R) -> i32 {
     let positions: Vec<i32> = reader
         .lines()
