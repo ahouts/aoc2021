@@ -1,4 +1,3 @@
-use bit_iter::BitIter;
 use bitflags::bitflags;
 use std::collections::HashMap;
 use std::io::BufRead;
@@ -15,12 +14,6 @@ bitflags! {
     }
 }
 
-impl Segments {
-    fn iter(self) -> impl Iterator<Item = Segments> {
-        BitIter::from(self.bits).map(|b| Segments::from_bits_truncate((1 << b) as u8))
-    }
-}
-
 #[derive(Debug, Copy, Clone, Eq, Ord, PartialOrd, PartialEq, Hash)]
 enum Digit {
     Zero,
@@ -33,30 +26,6 @@ enum Digit {
     Seven,
     Eight,
     Nine,
-}
-
-impl Digit {
-    fn segments(self) -> Segments {
-        const A: Segments = Segments::A;
-        const B: Segments = Segments::B;
-        const C: Segments = Segments::C;
-        const D: Segments = Segments::D;
-        const E: Segments = Segments::E;
-        const F: Segments = Segments::F;
-        const G: Segments = Segments::G;
-        match self {
-            Digit::Zero => A | B | C | E | F | G,
-            Digit::One => C | F,
-            Digit::Two => A | C | D | E | G,
-            Digit::Three => A | C | D | F | G,
-            Digit::Four => B | C | D | F,
-            Digit::Five => A | B | D | F | G,
-            Digit::Six => A | B | D | E | F | G,
-            Digit::Seven => A | C | F,
-            Digit::Eight => A | B | C | D | E | F | G,
-            Digit::Nine => A | B | C | D | F | G,
-        }
-    }
 }
 
 fn parse_line(text: &str) -> Vec<Segments> {

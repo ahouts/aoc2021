@@ -6,15 +6,8 @@ version = 3
 name = "aoc2021"
 version = "0.1.0"
 dependencies = [
- "bit-iter",
  "bitflags",
 ]
-
-[[package]]
-name = "bit-iter"
-version = "1.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4826e5298710fe9ce6264a7bf709cf2ddb0cd19e377595040a997022189a2356"
 
 [[package]]
 name = "bitflags"
