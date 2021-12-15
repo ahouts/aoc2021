@@ -2,8 +2,6 @@ use bit_iter::BitIter;
 use bitflags::bitflags;
 use std::collections::HashMap;
 use std::io::BufRead;
-use strum::IntoEnumIterator;
-use strum_macros::EnumIter;
 
 bitflags! {
     struct Segments: u8 {
@@ -23,7 +21,7 @@ impl Segments {
     }
 }
 
-#[derive(Debug, Copy, Clone, Eq, Ord, PartialOrd, PartialEq, Hash, EnumIter)]
+#[derive(Debug, Copy, Clone, Eq, Ord, PartialOrd, PartialEq, Hash)]
 enum Digit {
     Zero,
     One,
