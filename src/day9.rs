@@ -61,8 +61,8 @@ fn move_down(board: &Vec<Vec<u8>>, row: usize, col: usize) -> (usize, usize) {
     ]
     .into_iter()
     .map(|(row, col)| ((row, col), value_of(row, col)))
-    .filter(|(_, value)| *value != my_val)
-    .max_by_key(|(_, value)| *value)
+    .filter(|(cords, value)| *value != my_val || *cords == (row, col))
+    .min_by_key(|(_, value)| *value)
     .map(|((row, col), _)| (row as usize, col as usize))
     .unwrap_or((row as usize, col as usize))
 }
@@ -86,7 +86,7 @@ pub fn part2<R: BufRead>(reader: R) -> u32 {
         .map(|line: String| line.bytes().map(|c| c - b'0').collect())
         .collect();
 
-    let mut basin_sizes: HashMap<(usize, usize), u16> = HashMap::new();
+    let mut basin_sizes: HashMap<(usize, usize), u32> = HashMap::new();
     for row in 0..grid.len() {
         for col in 0..grid[0].len() {
             if grid[row][col] == 9 {
@@ -96,5 +96,7 @@ pub fn part2<R: BufRead>(reader: R) -> u32 {
         }
     }
 
-    unimplemented!()
+    let mut sizes: Vec<u32> = basin_sizes.into_values().collect();
+    sizes.sort_unstable();
+    sizes.into_iter().rev().take(3).product()
 }
