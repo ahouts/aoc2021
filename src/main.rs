@@ -6,6 +6,7 @@ mod day10;
 mod day11;
 mod day12;
 mod day13;
+mod day14;
 mod day2;
 mod day3;
 mod day4;
@@ -16,8 +17,8 @@ mod day8;
 mod day9;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let p = std::path::Path::new("day13.txt");
+    let p = std::path::Path::new("day14.txt");
     let f = std::fs::File::open(p)?;
-    println!("{}", day13::part2(BufReader::new(f)));
+    println!("{}", day14::part2(BufReader::new(f)));
     Ok(())
 }
